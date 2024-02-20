@@ -1,27 +1,53 @@
 /* ----------------------------------- *\
 			forms elements styles
 \* ----------------------------------- */
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="number"],
-input[type="range"],
-input[type="search"],
-input[type="tel"],
-input[type="url"] {
-	
-}
-textarea {
-	height: 100px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	resize: none;
-}
-.btn,
-button,
-input[type="submit"] {
-	
+.frm-field-counter {
+	display: block;
+	position: relative;
+	overflow: hidden;
+	padding: 0 40px;
+	height: 40px;
+	width: 100%;
+	.btn-field-counter {
+		width: 40px;height: 40px;
+		border-radius: 12px;
+		position: absolute;
+		top: 0;left: 0;
+		border: 1px solid #e3e5ea;
+		background: #fcfcfd;
+		padding: 0;
+		min-width: 0;
+		&:before, &:after {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 50%;left: 50%;
+			width: 10px;height: 2px;
+			background: var(--clr-base);
+			margin: -1px 0 0 -5px;
+		}
+		&.button-plus {
+			left: auto;
+			right: 0;
+			&:before {
+				transform: rotate(90deg);
+			}
+		}
+		&:hover {
+			background-color: #e3e5ea;
+		}
+	}
+	.form-input {
+		height: 40px;
+		background: none;
+		border-radius: 0;
+		border: none;
+		padding: 0 5px;
+		text-align: center;
+		font-size: 16px;
+		font-weight: 400;
+		color: var(--clr-base);
+	}
 }
 .frm-row,
 .frm-field,
@@ -31,7 +57,11 @@ input[type="submit"] {
 	position: relative;
 	line-height: 1;
 }
-.frm-select {
+.frm-field {
+    display: block;
+    width: 100%;
+}
+.frm-select, .frm-select-button {
 	position: relative;
 	display: block;
 	overflow: hidden;
@@ -54,5 +84,38 @@ input[type="submit"] {
             display: block;
             position: absolute;
         }
+	}
+}
+.frm-select-button {
+	display: inline-block;
+	flex-shrink: 0;
+	font-size: 18px;
+	line-height: 44px;
+	white-space: nowrap;
+	max-width: 100%;
+	overflow: hidden;
+	text-transform: uppercase;
+	&:hover {
+		label {
+			border-color: var(--clr-att);
+		}
+	}
+	input {
+		&:checked {
+			&~label {
+				background-color: var(--clr-att);
+				border-color: var(--clr-att);
+				color: #fff;
+			}
+		}
+	}
+	label {
+		cursor: pointer;
+		display: block;
+		height: 46px;
+		border-radius: var(--main-radius) 0 var(--main-radius) 0;
+		padding: 0 12px;
+		border: 1px solid #dbdde2;
+		transition: all ease 0.2s;
 	}
 }

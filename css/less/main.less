@@ -1,9 +1,18 @@
 :root {
-	--clr-base: #000;
-	--clr-att: #f00;
+	--clr-base: #222222;
+	--clr-att: #0032ab;
+	--clr-att-hover: #418cf2;
+	--clr-border: #e2e4e9;
+	--clr-light: #b3b6c2;
+	--clr-bg-light: #e4e5ea;
+
+	--main-radius: 2rem;
+	--main-shadow: 0px 7px 70px 0px rgba(45, 66, 91, 0.1);
 
 	--min: 320px;
-	--max: 1200px;
+	--max: 1500px;
+    
+    --paddingContainer: 15px;
 
 	font-size: 10px;
 }
@@ -17,11 +26,14 @@
 			main styles
 \* ----------------------------------- */
 body {
-	color: var(--clr-base, #000);
-	background: #fff;
+	color: var(--clr-base);
+	background: #f4f4f5;
+    font-size: 18px;
+    line-height: (25/18);
 }
-p, ul, ol {
+p, ul, ol, table, blockquote, .bq-text {
 	position: relative;
+    margin-bottom: (25/18em);
 	img {
 		max-width: 100%;
 	}
@@ -29,24 +41,76 @@ p, ul, ol {
 		margin-bottom: 0 !important;
 	}
 }
-
 li {
 	position: relative;
+	padding-left: 20px;
+	margin-bottom: 4px;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	&:before {
+		content: "";
+		display: block;
+		width: 8px;height: 8px;
+		border-radius: 50%;
+		background: var(--clr-att);
+		position: absolute;
+		left: 0;
+		top: (13/18em);
+		margin-top: -4px;
+	}
+}
+ol {
+	counter-reset: li; 
+	list-style: none;
+	li {
+		position: relative;
+		padding-left: 28px;
+		&:before {
+			content: counter(li) '.'; 
+			counter-increment: li; 
+			border-radius: 0;
+			background-color: transparent;
+			display: block;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 30px;
+			height: auto;
+			color: var(--clr-att);
+			font-weight: bold;
+		}
+	}
+}
+.menu, .list {
+    margin: 0;
+    padding: 0;
+    li {
+        margin: 0;
+        padding: 0;
+        &:before {
+            display: none;
+        }
+    }
 }
 a {
-	text-decoration: none;
-	color: var(--clr-att, #f00);
-	&:hover {
-		text-decoration: none;
-		color: var(--clr-att, #f00);
-	}
+    text-decoration: none;
+    color: var(--clr-att);
+    &:hover {
+        text-decoration: none;
+        color: var(--clr-att-hover);
+    }
 }
 a.link-main, .link-main {
-	text-decoration: none;
-	border-bottom: 1px solid;
-	&:hover {
-		border-bottom: none;
-	}
+    text-decoration: none;
+    border-bottom: 1px solid;
+    &:hover {
+    }
+}
+.link-phone {
+    white-space: nowrap;
 }
 h1, .h1-title,
 h2, .h2-title,
@@ -56,7 +120,124 @@ h5, .h5-title,
 h6, .h6-title {
 	display: block;
 	position: relative;
+    font-weight: 400;
+    margin: 1em 0;
+	line-height: (60/55);
     &:first-child {
         margin-top: 0;
+    }
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+.h1-title, h1 {
+	font-size: 3.5rem;
+	margin-bottom: 0.9em;
+	&.title-page {
+		font-size: 5.5rem;
+		font-weight: bold;
+	}
+}
+.h2-title, h2 {
+	font-size: 22px;
+	margin-bottom: 0.7em;
+}
+.text-alert, .title-alert {
+	color: #e61b23;
+}
+.text-att, .title-att {
+    color: var(--clr-att);
+}
+.text-light, .title-light {
+    color: var(--clr-light);
+}
+.text-center, .title-center {
+    text-align: center;
+}
+blockquote, .bq-text {
+	font-size: (22/18em);
+	line-height: (30/22);
+	margin: 1.6em 0 1.5em 0;
+	padding-left: 3.8rem;
+	position: relative;
+	color: var(--clr-att);
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		top: -0.4em;left: 0;bottom: -0.2em;
+		width: 2px;
+		background: var(--clr-att);
+	}
+	&:first-child {
+		margin-top: 0;
+	}
+}
+table {
+	margin: 3em 0;
+	&:first-child {
+		margin-top: 0;
+	}
+	thead {
+		th, td {
+			font-size: (16/18em);
+			text-transform: uppercase;
+			font-weight: bold;
+			padding-top: 1.2em;
+			padding-bottom: 1em;
+			background: var(--clr-bg-light);
+		}
+	}
+	th, td {
+		background: #fff;
+		border: none;
+		vertical-align: middle;
+		border-bottom: 1px solid var(--clr-border);
+		padding: 1em;
+		font-weight: 400;
+		text-align: left;
+		&:first-child {
+			padding-left: (30/18em);
+		}
+	}
+	tr {
+		&:last-child {
+			th, td {
+				border-bottom: none;
+			}
+		}
+	}
+}
+@media (max-width: 1399px) {
+    :root {
+        font-size: 9.5px;
+    }
+}
+@media (max-width: 1199px) {
+    :root {
+        font-size: 9px;
+    }
+}
+@media (max-width: 1023px) {
+    :root {
+        font-size: 8px;
+    }
+	body {
+		font-size: 16px;
+	}
+}
+@media (max-width: 767px) {
+    :root {
+        font-size: 7px;
+    }
+}
+@media (min-width: 1024px) {
+    :root {
+        --paddingContainer: 30px;
+    }
+}
+@media (min-width: 1400px) {
+    :root {
+        --paddingContainer: 40px;
     }
 }

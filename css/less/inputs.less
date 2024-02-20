@@ -1,0 +1,377 @@
+/* ----------------------------------- *\
+			inputs elements styles
+\* ----------------------------------- */
+.form-input[placeholder] {
+    text-overflow: ellipsis;
+}
+.form-input {
+    text-overflow: ellipsis;
+}
+textarea.form-input {
+
+}
+select.form-input {
+    display: block;
+    text-overflow: ellipsis;
+    width: 100%;
+    padding-right: 30px;
+    background-image: url(../img/icons/arrow-select.svg);
+    background-position: right 20px center;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -webkit-appearance: none;
+    appearance: none!important;
+    line-height: 1em;
+    text-indent: 0.01px;
+    //text-overflow: '';
+    outline: none;
+    &.form-input-clear {
+        height: auto;
+        border: none;
+        min-height: 0;
+        border-radius: 0;
+        box-shadow: none;
+        width: auto;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 1em;
+        line-height: inherit;
+        padding: 0 16px 0 0;
+        color: inherit;
+        font-weight: bold;
+        background-image: url(../img/icons/arrow-select.png);
+        background-size: 8px auto;
+        background-repeat: no-repeat;
+        background-position: right center;
+    }
+}
+select::-ms-expand {
+    display: none;
+}
+//   <select class="form-input form-input-line" required>
+//       <option value="" disabled selected hidden>Выбрать</option>
+//       <option>Пункт списка</option>
+//   </select>
+select.form-input:required:invalid {
+    color: #ADADAD;
+}
+.btn {
+	height: (50/18em);
+	border-radius: (15/18em);
+	padding: 0 (32/18em);
+	border: none;
+	font-size: 18px;
+	font-weight: 400;
+	color: #fff;
+	background: linear-gradient(to right, #3965d0, #1644b3);
+	color: #fff;
+	&:hover {
+		color: #fff;
+		opacity: 0.8;
+	}
+	&.button-light {
+		border: 1px solid #99969c;
+		background: fade(#333, 10);
+		color: #fff;
+		opacity: 1;
+		&:hover {
+			border-color: #fff;
+			background-color: #fff;
+			color: var(--clr-att);
+			opacity: 1;
+		}
+	}
+	&.button-tab {
+		height: 30px;
+		border-radius: 10px;
+		padding: 0 16px;
+		border: none;
+		font-size: 18px;
+		font-weight: 400;
+		color: var(--clr-base);
+		background: none;
+		&:hover, &.active {
+			color: #fff;
+			background-color: var(--clr-att);
+			opacity: 1;
+		}
+		&.active {
+			font-weight: bold;
+		}
+	}
+    &.button-border {
+		border: 1px solid var(--clr-att);
+		background: none;
+		color: var(--clr-att);
+		&:hover {
+			background-color: var(--clr-att);
+			color: #fff;
+		}
+    }
+    .button-ico {
+        width: 24px;
+        height: 24px;
+        margin: 0 10px;
+        transition: all ease 0.2s;
+        &:last-child {
+            margin-right: 0;
+        }
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+    .button-title {
+        &[data-title] {
+            &:before {
+                content: attr(data-title);
+            }
+        }
+        &[data-show] {
+            &:before {
+                content: attr(data-show);
+            }
+        }
+    }
+    &.active {
+        .button-title {
+            &[data-title-active] {
+                &:before {
+                    content: attr(data-title-active);
+                }
+            }
+        }
+        .button-title {
+            &[data-hide] {
+                &:before {
+                    content: attr(data-hide);
+                }
+            }
+        }
+    }
+}
+.btn-action-ico {
+    min-width: 0;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 40px;height: 40px;
+    text-align: center;
+    line-height: 40px;
+    text-decoration: none;
+    transition: all ease 0.2s;
+    flex-shrink: 0;
+    &:not(.btn) {
+        background: none;
+        border: none;
+        box-shadow: none;
+    }
+    &.btn {
+        min-width: 0;
+        min-height: 0;
+        padding: 0;
+        display: block;
+    }
+    &:before, &:after, [class*="icon-"], img, svg {
+        display: block;
+        position: absolute;
+        top: 0;bottom: 0;left: 0;right: 0;
+        margin: auto;
+        max-width: 100%;
+        max-height: 100%;
+        transition: all ease 0.2s;
+    }
+    img, svg {
+        max-width: 24px;
+        max-height: 24px;
+    }
+    &:before, &:after {
+        content: "";
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 24px auto;
+    }
+    &:hover {
+        text-decoration: none;
+        &:not(.btn) {
+            background: none;
+            box-shadow: none;
+        }
+    }
+	&.ico-zoom {
+		background-image: linear-gradient(to right, #3965d0, #1644b3);
+		border-radius: 50%;
+		&:before {
+			background-size: 40% auto;
+			background-image: url(../img/icons/plus.png);
+		}
+		&:hover {
+			background-image: linear-gradient(to right, #3965d0, #1644b3);
+		}
+	}
+	&.ico-go {
+		width: 48px;height: 48px;
+		border-radius: 50%;
+		background: #2d3033;
+		&:hover {
+			&:after {
+				opacity: 1;
+			}
+		}
+		&:before {
+			z-index: 2;
+			background-image: url(../img/icons/arrow-go.png);
+		}
+		&:after {
+			border-radius: 50%;
+			background: linear-gradient(to right, #3864cf, #1845b4);
+			opacity: 0;
+		}
+	}
+    &.ico-arrow {
+        z-index: 20;
+        cursor: pointer;
+		width: 30px;height: 45px;
+		border-radius: 50px;
+		background: #dbe0ed;
+        &:before {
+            background-image: url(../img/icons/arrow-slider.png);
+        }
+        &:hover {
+			background: #dbe0ed - #111;
+        }
+    }
+	&.ico-arrow-up, &.ico-arrow-down {
+		width: 90px;height: 42px;
+		border-radius: var(--main-radius);
+		background-color: rgba(244, 244, 245, 0.12);
+		&:hover {
+			background-color: rgba(244, 244, 245, 0.22);
+		}
+		&:before {
+			transform: rotate(-90deg);
+			filter: brightness(0) invert(1);
+		}
+	}
+	&.ico-arrow-down {
+		&:before {
+			transform: rotate(90deg);
+		}
+	}
+    &.ico-arrow-prev {
+        &:before {
+            .t-rotate(180deg);
+        }
+    }
+    &.ico-menu {
+        &:after, &:before {
+            width: 24px;
+            height: 18px;
+            border-top: 2px solid var(--clr-base);
+            border-bottom: 2px solid var(--clr-base);
+            margin: -9px 0 0 -12px;
+            top: 50%;
+            left: 50%;
+            right: auto;
+            bottom: auto;
+        }
+        &:before {
+            height: 2px;
+            margin-top: -1px;
+            border-top: none;
+        }
+        &.active {
+            &:after {
+                height: 2px;
+                margin-top: -1px;
+                border-top: none;
+                .t-rotate(-45deg);
+            }
+            &:before {
+                .t-rotate(45deg);
+            }
+        }
+    }
+    &.ico-close {
+        &:after, &:before {
+            width: 20px;
+            height: 2px;
+            top: 50%;
+            left: 50%;
+            bottom: auto;
+            right: auto;
+            margin: -1px 0 0 -10px;
+            background: var(--clr-base);
+        }
+        &:before {
+            .t-rotate(45deg);
+        }
+        &:after {
+            .t-rotate(-45deg);
+        }
+    }
+    &.button-soc {
+        img, svg {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+.btn-action-back {
+	display: inline-block;
+	position: relative;
+	padding-left: 30px;
+	&:before {
+		content: "";
+		display: block;
+		width: 24px;
+		height: 24px;
+		position: absolute;
+		background: url(../img/icons/arrow-back.png) center no-repeat;
+		top: 50%;left: 0;
+		margin-top: -12px;
+		background-size: 100% auto;
+	}
+	&:hover {
+		color: var(--clr-att);
+		opacity: 0.6;
+	}
+}
+.btn-action-icon {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    color: inherit;
+    &.button-att {
+        color: var(--clr-att);
+        .button-ico {
+            filter: none;
+        }
+    }
+    &:hover {
+        color: var(--clr-att);
+        .button-ico {
+            filter: none;
+        }
+    }
+    .button-ico {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        filter: brightness(0) grayscale(1);
+        &+.button-title {
+            padding-left: 10px;
+        }
+    }
+    .button-title {
+        display: block;
+    }
+}
